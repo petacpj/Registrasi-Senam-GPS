@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senam GPS Vol. 2 - Pendaftaran</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-green: #4CAF50;
+            --light-blue: #64B5F6;
+            --orange: #FF9800;
+            --light-orange: #FFB74D;
+            --dark-green: #388E3C;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --text-dark: #333333;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--light-blue), var(--light-orange));
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--dark-green);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--orange);
+            margin-bottom: 30px;
+        }
+
+        .event-description {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .event-description h2 {
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .event-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .detail-card {
+            background: linear-gradient(to right, var(--primary-green), var(--light-blue));
+            color: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px;
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .detail-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .registration-form {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .registration-form h2 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-green);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary-green), var(--dark-green));
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(to right, #25D366, #128C7E);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 300px;
+        }
+
+        .btn-whatsapp i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        .illustration {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .illustration img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-section h2 {
+            color: var(--dark-green);
+            margin-bottom: 20px;
+        }
+
+        .location-map {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .location-map h2 {
+            color: var(--dark-green);
+            margin-bottom: 20px;
+        }
+
+        .location-map img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        .location-map p {
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--white);
+            margin-top: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .contact-section {
+            margin-bottom: 20px;
+        }
+        
+        .contact-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--light-blue);
+        }
+        
+        .contact-info {
+            margin: 15px 0;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--light-blue);
+        }
+        
+        .whatsapp-button {
+            display: inline-block;
+            background: linear-gradient(to right, #25D366, #128C7E);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .whatsapp-button i {
+            margin-right: 8px;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .detail-card {
+                min-width: 100%;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            header, .event-description, .registration-form, .cta-section {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+
+        .form-col {
+            flex: 1;
+            padding: 0 10px;
+            min-width: 250px;
+        }
+
+        @media (max-width: 600px) {
+            .form-col {
+                min-width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+.tshirt-section {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .tshirt-section h2 {
+            color: var(--dark-green);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .tshirt-display {
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tshirt-display img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tshirt-description {
+            margin-top: 20px;
+            font-style: italic;
+            color: var(--text-dark);
+        }
+.registration-fee-section {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .registration-fee-section h2 {
+            color: var(--dark-green);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .fee-image-container {
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .fee-image {
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-register {
+            display: inline-block;
+            background: linear-gradient(to right, #FF4136, #FF851B);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+        }
+
+        .btn-register:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(to right, #FF851B, #FF4136);
+        }
+
+        .btn-register:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pendaftaran Senam GPS Vol. 2 Telah Dibuka!</h1>
+            <p class="subtitle">Raih Kesehatan dan Kebahagiaan Bersama Kami</p>
+            
+            <div class="illustration">
+                <img src="senamlogo.png" alt="Senam GPS Vol. 2 Logo" width="200" height="200">
+            </div>
+        </header>
+
+        <section class="event-description">
+            <h2>Tentang Acara Senam GPS Vol. 2</h2>
+            <p>Senam GPS (Gerakan Penuh Semangat) kembali hadir dengan konsep yang lebih seru dan menyenangkan! Acara ini dirancang untuk meningkatkan kebugaran tubuh, menjaga kesehatan jantung, dan mempererat keakraban antar peserta melalui aktivitas fisik yang menyenangkan.</p>
+            
+            <div class="event-details">
+                <div class="detail-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Waktu</h3>
+                    <p>Tanggal 24 Agustus 2025<br>07:00 - 12:00 WIB</p>
+                </div>
+                
+                <div class="detail-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Tempat</h3>
+                    <p>Dusun Cipajaran<br>RT 01 RW 06<br>Desa. Cintamulya Kec. Jatinangor </p>
+                </div>
+                
+                <div class="detail-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Manfaat</h3>
+                    <p>Menjaga kebugaran<br>Meningkatkan imunitas<br>Bersenang-senang bersama</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tshirt-section">
+            <h2>👕 Kaos Resmi Senam GPS Vol. 2</h2>
+            <div class="tshirt-display">
+                <img src="kaosenam.png" alt="Kaos Resmi Senam GPS Vol. 2">
+            </div>
+            <p class="tshirt-description">Setiap peserta akan mendapatkan kaos ini sesuai ukuran yang dipilih saat pendaftaran.</p>
+        </section>
+
+        <section class="registration-fee-section">
+            <h2>💰 Biaya Pendaftaran & Fasilitas Peserta. Minimal DP 50%</h2>
+            <div class="fee-image-container">
+                <img src="biaya.png" alt="Biaya Pendaftaran Senam GPS Vol. 2 hanya Rp 85.000 – sudah termasuk kaos, konsumsi, dan kupon doorprize." class="fee-image">
+            </div>
+            <a href="#form-gps" class="btn-register">Isi Formulir Pendaftaran Senam GPS Vol. 2</a>
+        </section>
+
+        <section class="registration-form" id="form-gps">
+            <h2>📝 Isi Formulir Pendaftaran Senam GPS Vol. 2</h2>
+            <div style="padding: 20px 0;">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfAfpBF_CMsM-0F5bD4nLISEBrCveHwgKhp5izdzTrifTU2tw/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+            </div>
+        </section>
+
+        <a href="https://chat.whatsapp.com/HeqbSzBLXE2EDVpooTvhEA" class="btn btn-whatsapp" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i>
+            Gabung Grup WhatsApp
+        </a>
+
+        <section class="location-map">
+            <h2>📍 Denah Lokasi Senam GPS Vol. 2</h2>
+            <div class="map-container">
+                <img src="denahsenam.png" alt="Denah Lokasi Senam GPS Vol. 2">
+            </div>
+            <p>Senam GPS Vol. 2 akan dilaksanakan sesuai denah di atas.</p>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="contact-section">
+                    <h3 class="contact-title"><i class="fas fa-phone"></i> Informasi Lebih Lanjut</h3>
+                    <p>Untuk pertanyaan seputar Senam GPS Vol. 2, hubungi:</p>
+                    
+                    <div class="contact-info">
+                        <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/6288809409219" class="whatsapp-button" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Chat via WhatsApp</a></p>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> Email: petacipajaran@gmail.com</p>
+                    </div>
+                </div>
+                
+                <hr style="border: 0.5px solid rgba(255, 255, 255, 0.3); margin: 20px 0;">
+                
+                <p class="copyright">&copy; 2025 Senam GPS Vol. 2. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Set today as default date for registration
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('registrationDate').value = today;
+            
+            // Form submission handler
+            document.getElementById('registrationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const fullName = document.getElementById('fullName').value;
+                
+                // In a real application, you would send this data to a server
+                // For this demo, we'll just show an alert
+                alert(`Terima kasih ${fullName}! Pendaftaran Anda telah berhasil. Silakan cek WhatsApp untuk informasi lebih lanjut.`);
+                
+                // Reset form
+                this.reset();
+                document.getElementById('registrationDate').value = today;
+            });
+        });
+    </script>
+</body>
+</html>
