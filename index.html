@@ -808,10 +808,241 @@
             background-color: var(--dark-accent);
             transform: translateY(-3px);
         }
+        
+        /* Centered Modal Popup Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-popup {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8) translateY(50px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 3px solid var(--orange);
+        }
+        
+        .modal-overlay.show .modal-popup {
+            transform: scale(1) translateY(0);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(243, 111, 33, 0.3);
+        }
+        
+        .modal-close:hover {
+            background: var(--light-orange);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(243, 111, 33, 0.4);
+        }
+        
+        .modal-title {
+            color: var(--orange);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.3;
+        }
+        
+        .modal-message {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .whatsapp-contacts-modal {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .whatsapp-contact-modal {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: var(--white);
+            padding: 18px 20px;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            border: 2px solid transparent;
+        }
+        
+        .whatsapp-contact-modal:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .whatsapp-icon-modal {
+            font-size: 2rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .contact-details-modal {
+            flex: 1;
+        }
+        
+        .contact-name-modal {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .contact-number-modal {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Responsive styles for modal */
+        @media (max-width: 768px) {
+            .modal-popup {
+                padding: 30px 25px;
+                width: 95%;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
+            
+            .modal-message {
+                font-size: 1rem;
+            }
+            
+            .whatsapp-contact-modal {
+                padding: 15px 18px;
+            }
+            
+            .whatsapp-icon-modal {
+                font-size: 1.8rem;
+                margin-right: 12px;
+            }
+            
+            .contact-name-modal {
+                font-size: 1rem;
+            }
+            
+            .contact-number-modal {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .modal-popup {
+                padding: 25px 20px;
+                width: 98%;
+            }
+            
+            .modal-title {
+                font-size: 1.3rem;
+            }
+            
+            .modal-message {
+                font-size: 0.95rem;
+            }
+            
+            .whatsapp-contact-modal {
+                padding: 12px 15px;
+            }
+            
+            .whatsapp-icon-modal {
+                font-size: 1.6rem;
+                margin-right: 10px;
+            }
+            
+            .contact-name-modal {
+                font-size: 0.95rem;
+            }
+            
+            .contact-number-modal {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Centered Modal Popup -->
+    <div id="registration-modal" class="modal-overlay" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <div class="modal-popup">
+            <button class="modal-close" id="close-modal" aria-label="Tutup modal" title="Tutup modal">×</button>
+            <h2 id="modal-title" class="modal-title">Pendaftaran melalui website telah ditutup</h2>
+            <p class="modal-message">Untuk mendaftar, silakan hubungi panitia melalui WhatsApp:</p>
+            <div class="whatsapp-contacts-modal">
+                <a href="https://wa.me/6289512499089" class="whatsapp-contact-modal" target="_blank" rel="noopener" aria-label="Hubungi Bu Heni Rohaeni via WhatsApp">
+                    <i class="fab fa-whatsapp whatsapp-icon-modal"></i>
+                    <div class="contact-details-modal">
+                        <span class="contact-name-modal">Bu Heni Rohaeni</span>
+                        <div class="contact-number-modal">0895-1249-9089</div>
+                    </div>
+                </a>
+                <a href="https://wa.me/6285722300111" class="whatsapp-contact-modal" target="_blank" rel="noopener" aria-label="Hubungi Bu Ade Lusi M Rahman via WhatsApp">
+                    <i class="fab fa-whatsapp whatsapp-icon-modal"></i>
+                    <div class="contact-details-modal">
+                        <span class="contact-name-modal">Bu Ade Lusi M Rahman</span>
+                        <div class="contact-number-modal">0857-2230-0111</div>
+                    </div>
+                </a>
+                <a href="https://wa.me/6288178043440" class="whatsapp-contact-modal" target="_blank" rel="noopener" aria-label="Hubungi Bu Tita Nurlindawati via WhatsApp">
+                    <i class="fab fa-whatsapp whatsapp-icon-modal"></i>
+                    <div class="contact-details-modal">
+                        <span class="contact-name-modal">Bu Tita Nurlindawati</span>
+                        <div class="contact-number-modal">0881-7804-344</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
     <nav aria-label="Primary Navigation" role="navigation">
         <div class="nav-container">
             <a href="#about" tabindex="0">Tentang</a>
@@ -1137,6 +1368,40 @@
                 
                 // Update last scroll position
                 lastScrollTop = scrollTop;
+            });
+            
+            // Registration Modal functionality
+            const registrationModal = document.getElementById('registration-modal');
+            const closeModalBtn = document.getElementById('close-modal');
+            
+            // Show the modal on page load
+            setTimeout(() => {
+                if (registrationModal) {
+                    registrationModal.classList.add('show');
+                }
+            }, 1000); // Show after 1 second
+            
+            // Close button functionality
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', function() {
+                    registrationModal.classList.remove('show');
+                });
+            }
+            
+            // Close modal when clicking on overlay (outside modal)
+            if (registrationModal) {
+                registrationModal.addEventListener('click', function(event) {
+                    if (event.target === registrationModal) {
+                        registrationModal.classList.remove('show');
+                    }
+                });
+            }
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && registrationModal && registrationModal.classList.contains('show')) {
+                    registrationModal.classList.remove('show');
+                }
             });
         });
     </script>
